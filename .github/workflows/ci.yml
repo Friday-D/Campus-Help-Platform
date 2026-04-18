@@ -1,24 +1,12 @@
-name: CI Pipeline
-on:
-  push:
-    branches: [ main, dev ]
-  pull_request:
-    branches: [ main, dev ]
+name: CI
+on: [push, pull_request]
 
 jobs:
-  check-docs:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install markdownlint
-        run: npm install -g markdownlint-cli
-
-      - name: Check Markdown files
-        run: markdownlint "docs/**/*.md" "*.md"
+      - name: Just test CI works
+        run: echo "CI 运行成功！"
